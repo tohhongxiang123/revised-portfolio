@@ -7,23 +7,25 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "THX",
-	description: "THX's app",
+    title: "THX",
+    description: "THX's app",
 };
 
 export default function RootLayout({
-	children,
+    children,
 }: {
-	children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-	return (
-		<html lang="en" suppressHydrationWarning>
-			<body className={`${inter.className} bg-white dark:bg-slate-900 text-slate-900 dark:text-white/75`}>
-				<Providers>
-					<Navbar />
-					<div>{children}</div>
-				</Providers>
-			</body>
-		</html>
-	);
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={`${inter.className} bg-white text-slate-900 dark:bg-slate-900 dark:text-white/75`}
+            >
+                <Providers>
+                    <Navbar />
+                    <div>{children}</div>
+                </Providers>
+            </body>
+        </html>
+    );
 }

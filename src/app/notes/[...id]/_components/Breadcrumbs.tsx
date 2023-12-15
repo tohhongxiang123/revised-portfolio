@@ -12,9 +12,7 @@ export default function BreadCrumbs({ parts }: BreadCrumbsProps) {
                     {index > 0 && (
                         <IconChevronRight size={16} className="mx-2" />
                     )}
-                    <span
-                        className="inline-flex items-center text-sm font-medium text-slate-700 dark:text-slate-400"
-                    >
+                    <span className="inline-flex items-center text-sm font-medium text-slate-700 dark:text-slate-400">
                         {decodeURI(part)}
                     </span>
                 </li>

@@ -10,10 +10,8 @@ interface SpecificNotePageProps {
     };
 }
 
-export default function SpecificNotePage({
-    params,
-}: SpecificNotePageProps) {
-    const content = use(getNote(["notes"].concat(params.id)))
+export default function SpecificNotePage({ params }: SpecificNotePageProps) {
+    const content = use(getNote(["notes"].concat(params.id)));
     return (
         <div>
             <BreadCrumbs parts={params.id} />

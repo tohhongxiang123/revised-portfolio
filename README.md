@@ -4,6 +4,7 @@
 git clone https://github.com/tohhongxiang123/revised-portfolio.git
 cd revised-portfolio
 yarn
+yarn husky install
 ```
 
 Start developing with

@@ -42,9 +42,7 @@ export default function Mermaid({ chart }: MermaidProps) {
     }, [id, chart, theme]);
 
     if (isLoading) {
-        return (
-            <p>...Loading</p>
-        )
+        return <p>...Loading</p>;
     }
     return (
         <div

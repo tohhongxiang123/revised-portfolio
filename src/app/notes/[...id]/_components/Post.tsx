@@ -6,7 +6,7 @@ import rehypeHighlight from "rehype-highlight";
 import { compileMDX } from "next-mdx-remote/rsc";
 
 import { use } from "react";
-import Mermaid from "./_mermaid";
+import Mermaid from "./Mermaid";
 
 async function compile(rawStringContent: string) {
     const { content, frontmatter } = await compileMDX<{ title: string }>({

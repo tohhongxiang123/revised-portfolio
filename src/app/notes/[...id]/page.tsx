@@ -1,7 +1,7 @@
 import getNote from "@/utils/get-note";
 
 import { use } from "react";
-import Post from "./_post";
+import Post from "./_components/Post";
 import BreadCrumbs from "./_components/Breadcrumbs";
 
 interface SpecificNotePageProps {

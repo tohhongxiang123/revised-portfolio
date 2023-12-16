@@ -26,11 +26,11 @@ export default function RootLayout({
                 ></link>
             </head>
             <body
-                className={`${inter.className} bg-white text-slate-900 dark:bg-slate-900 dark:text-white/75`}
+                className={`${inter.className} flex h-screen flex-col overflow-hidden bg-white text-slate-900 dark:bg-slate-900 dark:text-white/75`}
             >
                 <Providers>
                     <Navbar />
-                    <div>{children}</div>
+                    <div className="relative overflow-hidden">{children}</div>
                 </Providers>
             </body>
         </html>

@@ -1,7 +1,11 @@
 "use client";
 
 import { NestedDirectoryStructure } from "@/utils/get-notes";
-import { IconChevronDown, IconChevronRight } from "@tabler/icons-react";
+import {
+    IconChevronDown,
+    IconChevronRight,
+    IconLayoutSidebarLeftCollapse,
+} from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -28,9 +32,34 @@ export default function NestedLayout({
 }: {
     items: NestedDirectoryStructure[];
 }) {
-    return items.map((item) => (
-        <NestedDirectoryItem item={item} key={item.fullPath} />
-    ));
+    const [isOpen, setIsOpen] = useState(true);
+    const handleOpen = () => {
+        setIsOpen((c) => !c);
+    };
+
+    return (
+        <div className={`flex h-full flex-col ${isOpen ? "w-96" : ""}`}>
+            <AnimatePresence>
+                {isOpen ? (
+                    <ul className="h-full overflow-auto">
+                        {items.map((item) => (
+                            <li key={item.fullPath}>
+                                <NestedDirectoryItem item={item} />
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <div className="h-full" />
+                )}
+            </AnimatePresence>
+            <div className="flex justify-between border-t border-slate-900/10 p-4">
+                <span></span>
+                <button onClick={handleOpen}>
+                    <IconLayoutSidebarLeftCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                </button>
+            </div>
+        </div>
+    );
 }
 
 function NestedDirectoryItem({ item }: { item: NestedDirectoryStructure }) {

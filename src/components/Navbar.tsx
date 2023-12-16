@@ -28,7 +28,7 @@ export default function Navbar() {
     const path = usePathname();
 
     return (
-        <nav className="sticky top-0 z-10 w-full border-b border-slate-900/10 bg-white/95 backdrop-blur-sm dark:border-slate-50/[0.06] dark:bg-gray-900/95">
+        <nav className="z-10 w-full border-b border-slate-900/10 bg-white/95 backdrop-blur-sm dark:border-slate-50/[0.06] dark:bg-gray-900/95">
             <div className="mx-auto flex w-full items-center justify-between px-4 py-2">
                 <Link href="/" className="mx-4">
                     <span className="self-center whitespace-nowrap text-2xl font-bold dark:text-white">

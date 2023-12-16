@@ -5,11 +5,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const notes = getNotes("notes");
 
     return (
-        <div className="flex">
-            <div className="w-72">
+        <div className="flex h-full">
+            <div>
                 <NestedLayout items={notes} />
             </div>
-            <div className="mx-auto">{children}</div>
+            <div className="flex w-full flex-col items-center overflow-y-auto">
+                {children}
+            </div>
         </div>
     );
 }

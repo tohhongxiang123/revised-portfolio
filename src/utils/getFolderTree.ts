@@ -3,11 +3,13 @@ import path from "path";
 
 export type NestedDirectoryStructure = {
     name: string;
-    fullPath: string;
+    path: string[];
     children: NestedDirectoryStructure[];
 };
 
-export default function getNotes(folder: string): NestedDirectoryStructure[] {
+export default function getFolderTree(
+    folder: string
+): NestedDirectoryStructure[] {
     const collator = new Intl.Collator(undefined, {
         numeric: true,
         sensitivity: "base",
@@ -20,12 +22,12 @@ export default function getNotes(folder: string): NestedDirectoryStructure[] {
         let children: NestedDirectoryStructure[] = [];
 
         if (fs.lstatSync(fullPath).isDirectory()) {
-            children = getNotes(fullPath);
+            children = getFolderTree(fullPath);
         }
 
         return {
             name,
-            fullPath,
+            path: fullPath.split(path.sep),
             children,
         };
     });

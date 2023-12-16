@@ -1,6 +1,6 @@
 "use client";
 
-import { NestedDirectoryStructure } from "@/utils/get-notes";
+import { NestedDirectoryStructure } from "@/utils/getFolderTree";
 import {
     IconChevronDown,
     IconChevronRight,
@@ -61,7 +61,7 @@ export default function NestedLayout({
                         key="sidebar"
                     >
                         {items.map((item) => (
-                            <li key={item.fullPath}>
+                            <li key={item.path.join("/")}>
                                 <NestedDirectoryItem item={item} />
                             </li>
                         ))}
@@ -95,14 +95,14 @@ function NestedDirectoryItem({ item }: { item: NestedDirectoryStructure }) {
     };
 
     const isItemActive = arrayEquals(
-        item.fullPath.split(sep).filter(Boolean),
+        item.path,
         decodeURIComponent(path).split(sep).filter(Boolean)
     );
 
     if (item.children.length === 0) {
         return (
             <Link
-                href={`/${item.fullPath}`}
+                href={`/${item.path.join("/")}`}
                 className={`relative flex w-full cursor-pointer items-center justify-between rounded-md p-2 text-left text-sm hover:bg-gray-500/10 ${
                     isItemActive ? "bg-gray-500/10 font-bold" : ""
                 }`}
@@ -142,7 +142,7 @@ function NestedDirectoryItem({ item }: { item: NestedDirectoryStructure }) {
                                 initial="hidden"
                                 animate="show"
                                 exit="exit"
-                                key={child.fullPath}
+                                key={child.path.join("/")}
                                 className="pl-1.5"
                             >
                                 <NestedDirectoryItem item={child} />
@@ -176,10 +176,7 @@ function checkIfOpen(
     currentPath: string
 ): boolean {
     if (item.children.length == 0) {
-        return arrayEquals(
-            item.fullPath.split(sep).filter(Boolean),
-            currentPath.split("/").filter(Boolean)
-        );
+        return arrayEquals(item.path, currentPath.split("/").filter(Boolean));
     }
 
     return item.children.some((child) =>

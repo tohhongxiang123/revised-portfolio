@@ -30,7 +30,9 @@ export default function RootLayout({
             >
                 <Providers>
                     <Navbar />
-                    <div className="relative overflow-hidden">{children}</div>
+                    <div className="relative h-full overflow-hidden">
+                        {children}
+                    </div>
                 </Providers>
             </body>
         </html>

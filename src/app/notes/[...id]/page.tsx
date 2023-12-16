@@ -1,6 +1,5 @@
-import getNote from "@/utils/get-note";
+import getFileContents from "@/utils/getFileContents";
 
-import { use } from "react";
 import Post from "./_components/Post";
 import BreadCrumbs from "./_components/Breadcrumbs";
 
@@ -10,10 +9,15 @@ interface SpecificNotePageProps {
     };
 }
 
-export default function SpecificNotePage({ params }: SpecificNotePageProps) {
-    const content = use(getNote(["notes"].concat(params.id)));
+export default async function SpecificNotePage({
+    params,
+}: SpecificNotePageProps) {
+    const content = await getFileContents(
+        ["notes"].concat(params.id).map(decodeURIComponent)
+    );
+
     return (
-        <div>
+        <div className="mx-auto block px-16">
             <BreadCrumbs parts={params.id} />
             <div className="my-4" />
             <Post rawStringContent={content} />

@@ -5,11 +5,18 @@ import {
     IconChevronDown,
     IconChevronRight,
     IconLayoutSidebarLeftCollapse,
+    IconLayoutSidebarRightCollapse,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
+const sidebarVariants = {
+    hidden: { x: "-100%", transition: { duration: 0.1 } },
+    show: { x: "0", transition: { duration: 0.1 } },
+    exit: { x: "-100%", transition: { duration: 0.1 } },
+};
 
 const nestedNavVariants = {
     hidden: { height: 0, opacity: 0, transition: { duration: 0.1 } },
@@ -38,16 +45,27 @@ export default function NestedLayout({
     };
 
     return (
-        <div className={`flex h-full flex-col ${isOpen ? "w-96" : ""}`}>
-            <AnimatePresence>
+        <div
+            className={`flex h-full flex-col ${
+                isOpen ? "w-96" : ""
+            } transition-[width]`}
+        >
+            <AnimatePresence initial={false} mode="popLayout">
                 {isOpen ? (
-                    <ul className="h-full overflow-auto">
+                    <motion.ul
+                        variants={sidebarVariants}
+                        initial="hidden"
+                        animate="show"
+                        exit="exit"
+                        className="h-full overflow-auto"
+                        key="sidebar"
+                    >
                         {items.map((item) => (
                             <li key={item.fullPath}>
                                 <NestedDirectoryItem item={item} />
                             </li>
                         ))}
-                    </ul>
+                    </motion.ul>
                 ) : (
                     <div className="h-full" />
                 )}
@@ -55,7 +73,11 @@ export default function NestedLayout({
             <div className="flex justify-between border-t border-slate-900/10 p-4">
                 <span></span>
                 <button onClick={handleOpen}>
-                    <IconLayoutSidebarLeftCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                    {isOpen ? (
+                        <IconLayoutSidebarLeftCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                    ) : (
+                        <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                    )}
                 </button>
             </div>
         </div>

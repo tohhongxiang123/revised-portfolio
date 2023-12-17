@@ -1,5 +1,24 @@
 # MDX TEsting
 
+```jsx
+import Children from "react-children-utilities";
+import CodeCopyButton from "./CodeCopyButton";
+
+export default function Pre({ children, ...props }: any) {
+    const code = Children.onlyText(children);
+
+    return (
+        <pre {...props} className="relative">
+            <CodeCopyButton
+                code={code}
+                className={`${props.className} absolute right-0 top-0`}
+            />
+            {children}
+        </pre>
+    );
+}
+```
+
 -   1
 -   2
 -   3

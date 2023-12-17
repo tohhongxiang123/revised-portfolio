@@ -2,16 +2,20 @@ import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import { remarkMermaid } from "remark-mermaid-nextra";
 import rehypeKatex from "rehype-katex";
-import rehypeHighlight from "rehype-highlight";
+import rehypePrettyCode from "rehype-pretty-code";
 import { compileMDX } from "next-mdx-remote/rsc";
 
 import { use } from "react";
 import Mermaid from "./Mermaid";
+import CustomCodeBlock from "./CustomCodeBlock";
 
 async function compile(rawStringContent: string) {
     const { content, frontmatter } = await compileMDX<{ title: string }>({
         source: rawStringContent,
-        components: { Mermaid: Mermaid },
+        components: {
+            Mermaid: Mermaid,
+            pre: CustomCodeBlock,
+        },
         options: {
             mdxOptions: {
                 development: true,
@@ -21,8 +25,12 @@ async function compile(rawStringContent: string) {
                     remarkGfm,
                     remarkMath,
                 ],
-                // @ts-expect-error wrong types defined
-                rehypePlugins: [rehypeKatex, rehypeHighlight],
+                rehypePlugins: [
+                    // @ts-expect-error wrong types defined
+                    rehypeKatex,
+                    // @ts-expect-error wrong types defined
+                    [rehypePrettyCode, { theme: "one-dark-pro" }],
+                ],
             },
             parseFrontmatter: true,
         },

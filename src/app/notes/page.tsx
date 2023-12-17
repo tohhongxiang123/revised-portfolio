@@ -18,7 +18,7 @@ export default async function NotesPage() {
 const getLinkOfFirstNote = (notes: NestedDirectoryStructure[]): string => {
     const current = notes[0];
     if (current.children.length === 0) {
-        return current.path.join("");
+        return current.path.join("/");
     }
 
     return getLinkOfFirstNote(current.children);

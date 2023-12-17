@@ -5,8 +5,8 @@ import { ThemeProvider } from "next-themes";
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return (
-        <AnimatePresence mode="wait">
-            <ThemeProvider attribute="class">{children}</ThemeProvider>
-        </AnimatePresence>
+        <ThemeProvider attribute="class">
+            <AnimatePresence mode="wait">{children}</AnimatePresence>
+        </ThemeProvider>
     );
 }

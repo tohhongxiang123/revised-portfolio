@@ -9,7 +9,7 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const sidebarVariants = {
@@ -93,6 +93,16 @@ function NestedDirectoryItem({ item }: { item: NestedDirectoryStructure }) {
         e.stopPropagation();
         setIsOpen((c) => !c);
     };
+
+    useEffect(() => {
+        setIsOpen((isOpen) => {
+            if (isOpen) {
+                return isOpen;
+            }
+
+            return checkIfOpen(item, decodedPath);
+        });
+    }, [decodedPath]);
 
     const isItemActive = arrayEquals(
         item.path,

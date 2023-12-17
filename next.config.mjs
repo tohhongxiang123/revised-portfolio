@@ -4,6 +4,7 @@ import remarkHtml from "remark-html";
 import remarkPrism from "remark-prism";
 import remarkParse from "remark-parse";
 import rehypeKatex from "rehype-katex";
+import rehypeHighlight from "rehype-highlight";
 import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
@@ -18,13 +19,13 @@ const withMDX = createMDX({
     extension: /\.(md|mdx)$/,
     options: {
         remarkPlugins: [
-            remarkParse,
+            // remarkParse,
             remarkGfm,
             remarkMath,
-            remarkHtml,
+            // remarkHtml,
             remarkPrism,
         ],
-        rehypePlugins: [rehypeKatex],
+        rehypePlugins: [rehypeKatex, rehypeHighlight],
     },
 });
 

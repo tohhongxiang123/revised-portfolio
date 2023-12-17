@@ -17,7 +17,7 @@ export default function getFolderTree(
     const filesOrFolders = fs.readdirSync(folder).sort(collator.compare);
 
     const nested = filesOrFolders.map((fileOrFolder) => {
-        const name = fileOrFolder.replace(".md", "");
+        const name = path.parse(fileOrFolder).name;
         const fullPath = path.join(folder, fileOrFolder);
         let children: NestedDirectoryStructure[] = [];
 

@@ -145,6 +145,7 @@ function NestedDirectoryItem({ item }: { item: NestedDirectoryStructure }) {
                         animate="show"
                         exit="exit"
                         className="ml-4 border-l border-gray-700/30"
+                        key={item.path.join("/")}
                     >
                         {item.children.map((child) => (
                             <motion.li

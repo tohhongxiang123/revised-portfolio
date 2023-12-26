@@ -1,13 +1,15 @@
-/* eslint-env node */
-const path = require('path');
-
-const eslintCommand = (filenames) =>
-  `next lint --file ${filenames
-    .map((f) => path.relative(process.cwd(), f))
-    .join(' --file ')}`;
-
-const formatCommand = 'prettier --write';
+// lint-staged.config.js
 module.exports = {
-  '*.{js,jsx,ts,tsx}': [formatCommand, eslintCommand],
-  '!*.{js,jsx,ts,tsx,css,scss}': [formatCommand],
-};
+    // Type check TypeScript files
+    '**/*.(ts|tsx)': () => 'yarn tsc --noEmit',
+
+    // Lint then format TypeScript and JavaScript files
+    '**/*.(ts|tsx|js)': (filenames) => [
+        `yarn eslint --fix ${filenames.map((f) => `'${f}'`).join(' ')}`,
+        `yarn prettier --write ${filenames.map((f) => `'${f}'`).join(' ')}`,
+    ],
+
+    // Format MarkDown and JSON
+    '**/*.(md|json)': (filenames) =>
+        `yarn prettier --write ${filenames.map((f) => `'${f}'`).join(' ')}`,
+}

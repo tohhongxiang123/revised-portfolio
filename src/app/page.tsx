@@ -1,11 +1,8 @@
-import PageWrapper from "@/components/PageWrapper";
-import renderMarkdownFile from "@/utils/renderMarkdownFile";
+import PageWrapper from '@/components/PageWrapper'
 
 export default async function Home() {
-	const result = await renderMarkdownFile(["notes", "test.md"])
-	
-	return (
-		<PageWrapper>
+    return (
+        <PageWrapper>
             <main className="flex min-h-screen flex-col items-center gap-16 p-24">
                 <div className="flex flex-col items-center gap-y-8">
                     <h1 className="text-8xl font-bold tracking-tight text-black dark:text-white">
@@ -26,5 +23,5 @@ export default async function Home() {
                 </div>
             </main>
         </PageWrapper>
-	);
+    )
 }

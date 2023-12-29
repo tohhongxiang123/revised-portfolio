@@ -10,11 +10,16 @@
     },
     "dependencies": {
         "@headlessui/react": "^1.7.17",
+        "@radix-ui/react-alert-dialog": "^1.0.5",
+        "@radix-ui/react-slot": "^1.0.2",
         "@tabler/icons-react": "^2.44.0",
         "@tailwindcss/typography": "^0.5.10",
         "@theguild/remark-mermaid": "^0.0.5",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.0.0",
         "esbuild": "^0.19.10",
         "framer-motion": "^10.16.16",
+        "lucide-react": "^0.303.0",
         "mdx-bundler": "^10.0.1",
         "mermaid": "^10.6.1",
         "next": "14.0.4",
@@ -30,7 +35,9 @@
         "remark-mdx-images": "^3.0.0",
         "remark-parse": "^11.0.0",
         "remark-stringify": "^11.0.0",
-        "shikiji": "^0.9.11"
+        "shikiji": "^0.9.11",
+        "tailwind-merge": "^2.2.0",
+        "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
         "@types/node": "^20",

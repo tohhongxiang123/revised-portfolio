@@ -29,5 +29,5 @@ export default function SearchBar() {
                 CTRL + K
             </kbd>
         </div>
-    );
+    )
 }

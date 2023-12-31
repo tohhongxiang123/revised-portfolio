@@ -18,7 +18,7 @@ export default async function SpecificNotePage({
     ])
 
     return (
-        <div className="px-16 pb-16 w-full xl:w-2/3 max-w-3xl mx-auto">
+        <div className="mx-auto w-full max-w-3xl px-16 pb-16 xl:w-2/3">
             <BreadCrumbs parts={params.id} />
             <div className="my-4" />
             <PageWrapper>

@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import { IconCheck, IconCopy } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import { IconCheck, IconCopy } from '@tabler/icons-react'
+import { useEffect, useState } from 'react'
 
 interface CodeCopyButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    code: string;
+    code: string
 }
 const CodeCopyButton = ({ code, ...props }: CodeCopyButtonProps) => {
-    const [showCopied, setShowCopied] = useState(false);
+    const [showCopied, setShowCopied] = useState(false)
 
     const copyCode = () => {
-        navigator.clipboard.writeText(code);
-        setShowCopied(true);
-    };
+        navigator.clipboard.writeText(code)
+        setShowCopied(true)
+    }
 
     useEffect(() => {
-        const timeout = setTimeout(() => setShowCopied(false), 2000);
+        const timeout = setTimeout(() => setShowCopied(false), 2000)
         return () => {
-            clearTimeout(timeout);
-        };
-    }, [showCopied]);
+            clearTimeout(timeout)
+        }
+    }, [showCopied])
 
     return (
         <button
@@ -30,7 +30,7 @@ const CodeCopyButton = ({ code, ...props }: CodeCopyButtonProps) => {
         >
             {showCopied ? <IconCheck /> : <IconCopy />}
         </button>
-    );
-};
+    )
+}
 
-export default CodeCopyButton;
+export default CodeCopyButton

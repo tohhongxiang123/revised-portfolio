@@ -5,7 +5,7 @@ export default async function Home() {
         <PageWrapper>
             <main className="flex min-h-screen flex-col items-center gap-16 p-24">
                 <div className="flex flex-col items-center gap-y-8">
-                    <h1 className="text-8xl font-bold tracking-tight text-black dark:text-white">
+                    <h1 className="text-center text-8xl font-bold tracking-tight text-black dark:text-white">
                         Toh Hong Xiang
                     </h1>
                     <p className="text-xl font-light">

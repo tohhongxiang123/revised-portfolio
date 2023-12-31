@@ -1,31 +1,36 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import ThemeChanger from "./ThemeChanger";
-import SearchBar from "./Searchbar";
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import ThemeChanger from './ThemeChanger'
+import SearchBar from './Searchbar'
+import { IconMenu2, IconX } from '@tabler/icons-react'
+import { useState } from 'react'
 
 const links = [
     {
-        href: "/",
-        label: "Home",
+        href: '/',
+        label: 'Home',
     },
     {
-        href: "/projects",
-        label: "Projects",
+        href: '/projects',
+        label: 'Projects',
     },
     {
-        href: "/notes",
-        label: "Notes",
+        href: '/notes',
+        label: 'Notes',
     },
     {
-        href: "/contact-us",
-        label: "Contact Us",
+        href: '/contact-us',
+        label: 'Contact Us',
     },
-];
+]
 
 export default function Navbar() {
-    const path = usePathname();
+    const path = usePathname()
+    const rootPath = `/${path.split('/')[1]}`
+
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <nav className="z-10 w-full border-b border-slate-900/10 bg-white/95 backdrop-blur-sm dark:border-slate-50/[0.06] dark:bg-gray-900/95">
@@ -35,14 +40,21 @@ export default function Navbar() {
                         THX
                     </span>
                 </Link>
-                <div className="flex">
+                <div className="flex md:hidden">
+                    <button onClick={() => setIsOpen((c) => !c)}>
+                        {isOpen ? <IconX /> : <IconMenu2 />}
+                    </button>
+                </div>
+                <div className="hidden md:flex">
                     <ul className="text-md flex items-center gap-x-6 px-2 py-1 font-light">
                         {links.map((link) => (
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
                                     className={
-                                        link.href === path ? "font-bold" : ""
+                                        link.href === rootPath
+                                            ? 'font-bold'
+                                            : ''
                                     }
                                 >
                                     {link.label}
@@ -59,5 +71,5 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
-    );
+    )
 }

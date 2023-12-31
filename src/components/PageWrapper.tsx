@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 
 interface PageWrapperProps {
-    children: React.ReactNode;
-    className?: string;
+    children: React.ReactNode
+    className?: string
 }
 
 export default function PageWrapper({ children, className }: PageWrapperProps) {
@@ -21,5 +21,5 @@ export default function PageWrapper({ children, className }: PageWrapperProps) {
         >
             {children}
         </motion.div>
-    );
+    )
 }

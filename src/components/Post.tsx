@@ -9,7 +9,7 @@ export default function Post({ content }: { content: string }) {
     const Component = useMemo(() => getMDXComponent(content), [content])
     return (
         <>
-            <main className="mx-auto prose prose-neutral dark:prose-invert">
+            <main className="prose prose-neutral mx-auto dark:prose-invert">
                 <Component
                     components={{
                         pre: CustomCodeBlock,

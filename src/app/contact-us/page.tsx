@@ -1,4 +1,4 @@
-import PageWrapper from "@/components/PageWrapper";
+import PageWrapper from '@/components/PageWrapper'
 
 export default function ContactUsPage() {
     return (
@@ -11,5 +11,5 @@ export default function ContactUsPage() {
                 necessitatibus, deserunt eveniet laboriosam quas esse.
             </p>
         </PageWrapper>
-    );
+    )
 }

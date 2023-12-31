@@ -1,4 +1,4 @@
-import PageWrapper from "@/components/PageWrapper";
+import PageWrapper from '@/components/PageWrapper'
 
 export default function ProductsPage() {
     return (
@@ -13,5 +13,5 @@ export default function ProductsPage() {
                 </p>
             </main>
         </PageWrapper>
-    );
+    )
 }

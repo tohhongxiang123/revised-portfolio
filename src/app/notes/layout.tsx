@@ -1,11 +1,11 @@
-import NestedLayout from "@/components/NestedSidebar";
-import getFolderTree from "@/utils/getFolderTree";
+import NestedLayout from '@/components/NestedSidebar'
+import getFolderTree from '@/utils/getFolderTree'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-    const notes = getFolderTree("notes");
+    const notes = getFolderTree('notes')
 
     return (
-        <div className='flex h-full'>
+        <div className="flex h-full">
             <div>
                 <NestedLayout items={notes} />
             </div>
@@ -13,5 +13,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {children}
             </div>
         </div>
-    );
+    )
 }

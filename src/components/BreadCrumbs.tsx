@@ -1,7 +1,7 @@
-import { IconChevronRight } from "@tabler/icons-react";
+import { IconChevronRight } from '@tabler/icons-react'
 
 interface BreadCrumbsProps {
-    parts: string[];
+    parts: string[]
 }
 
 export default function BreadCrumbs({ parts }: BreadCrumbsProps) {
@@ -18,5 +18,5 @@ export default function BreadCrumbs({ parts }: BreadCrumbsProps) {
                 </li>
             ))}
         </ul>
-    );
+    )
 }

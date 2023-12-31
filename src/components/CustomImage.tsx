@@ -18,7 +18,7 @@ export default function CustomImage({ src = '', alt = '' }: CustomImageProps) {
                 <button
                     type="button"
                     onClick={openModal}
-                    className="hover:scale-[1.01] duration-75"
+                    className="duration-75 hover:scale-[1.01]"
                 >
                     <img src={src} alt={alt} />
                 </button>
@@ -49,7 +49,7 @@ export default function CustomImage({ src = '', alt = '' }: CustomImageProps) {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="transform overflow-hidden rounded-2xl bg-white dark:bg-slate-900 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all dark:bg-slate-900">
                                     <div className="flex items-center justify-between px-4 py-2">
                                         <Dialog.Title
                                             as="h3"
@@ -60,7 +60,7 @@ export default function CustomImage({ src = '', alt = '' }: CustomImageProps) {
                                         <div>
                                             <button
                                                 type="button"
-                                                className="inline-flex justify-center rounded-md p-2 text-sm font-medium focus:outline-none opacity-75 hover:opacity-100"
+                                                className="inline-flex justify-center rounded-md p-2 text-sm font-medium opacity-75 hover:opacity-100 focus:outline-none"
                                                 onClick={closeModal}
                                             >
                                                 <IconX />

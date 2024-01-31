@@ -25,7 +25,12 @@ const themes: {
     },
 };
 
-export default function ThemeChanger() {
+interface ThemeChangerProps {
+    menuItemClassnames?: string;
+}
+export default function ThemeChanger({
+    menuItemClassnames = "",
+}: ThemeChangerProps) {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
 
@@ -52,7 +57,9 @@ export default function ThemeChanger() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="absolute right-0 z-20 mt-2 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-slate-800">
+                <Menu.Items
+                    className={`absolute right-0 z-20 mt-2 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none dark:bg-slate-800 ${menuItemClassnames}`}
+                >
                     <div className="px-1 py-1">
                         {Object.values(themes).map((theme) => (
                             <Menu.Item key={theme.value}>

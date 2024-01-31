@@ -46,39 +46,45 @@ export default function NestedLayout({
 
     return (
         <div
-            className={`flex h-full flex-col ${
-                isOpen ? "w-96" : ""
-            } transition-[width]`}
+            className={`absolute left-0 z-10 h-full lg:relative ${
+                isOpen ? "w-full" : ""
+            } bg-slate-800/50 backdrop-blur-sm transition-[width]`}
         >
-            <AnimatePresence initial={false} mode="popLayout">
-                {isOpen ? (
-                    <motion.ul
-                        variants={sidebarVariants}
-                        initial="hidden"
-                        animate="show"
-                        exit="exit"
-                        className="h-full overflow-auto"
-                        key="sidebar"
-                    >
-                        {items.map((item) => (
-                            <li key={item.path.join("/")}>
-                                <NestedDirectoryItem item={item} />
-                            </li>
-                        ))}
-                    </motion.ul>
-                ) : (
-                    <div className="h-full" />
-                )}
-            </AnimatePresence>
-            <div className="flex justify-between border-t border-slate-900/10 p-4">
-                <span></span>
-                <button onClick={handleOpen}>
+            <div
+                className={`flex h-full ${
+                    isOpen ? "w-96" : ""
+                } flex-col border-r border-slate-400/20 bg-white transition-[width] dark:bg-slate-900`}
+            >
+                <AnimatePresence initial={false} mode="popLayout">
                     {isOpen ? (
-                        <IconLayoutSidebarLeftCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                        <motion.ul
+                            variants={sidebarVariants}
+                            initial="hidden"
+                            animate="show"
+                            exit="exit"
+                            className="h-full overflow-auto"
+                            key="sidebar"
+                        >
+                            {items.map((item) => (
+                                <li key={item.path.join("/")}>
+                                    <NestedDirectoryItem item={item} />
+                                </li>
+                            ))}
+                        </motion.ul>
                     ) : (
-                        <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                        <div className="h-full" />
                     )}
-                </button>
+                </AnimatePresence>
+                <div className="flex justify-between border-t border-slate-900/10 p-4">
+                    <span></span>
+                    <button onClick={handleOpen}>
+                        {isOpen ? (
+                            <IconLayoutSidebarLeftCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                        ) : (
+                            <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                        )}
+                    </button>
+                </div>
             </div>
         </div>
     );

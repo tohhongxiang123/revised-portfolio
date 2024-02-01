@@ -34,7 +34,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="relative z-10">
+        <div className="relative z-20">
             <nav className="w-full border-b border-slate-900/10 bg-white/95 backdrop-blur-sm dark:border-slate-50/[0.06] dark:bg-gray-900/95">
                 <div className="mx-auto flex w-full items-center justify-between px-4 py-2">
                     <Link href="/" className="mx-4">
@@ -80,7 +80,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: "-100%" }}
                         transition={{ duration: 0.1, ease: "easeInOut" }}
-                        className="absolute top-0 -z-10 flex h-screen w-full flex-col"
+                        className="absolute top-0 -z-10 flex h-screen w-full flex-col md:hidden"
                     >
                         <div className="my-6" />
                         <ul className="text-md z-20 flex h-full w-full flex-col gap-2 gap-x-6 rounded-b-lg bg-white px-2 py-4 pb-2 font-light shadow dark:bg-slate-800">

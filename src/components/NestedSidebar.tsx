@@ -48,12 +48,12 @@ export default function NestedLayout({
         <div
             className={`absolute left-0 z-10 h-full lg:relative ${
                 isOpen ? "w-full" : ""
-            } bg-slate-800/50 backdrop-blur-sm transition-[width]`}
+            } flex flex-row bg-slate-800/50 backdrop-blur-sm transition-[width]`}
         >
             <div
                 className={`flex h-full ${
-                    isOpen ? "w-96" : ""
-                } flex-col border-r border-slate-400/20 bg-white transition-[width] dark:bg-slate-900`}
+                    isOpen ? "w-full sm:w-96" : ""
+                } flex-col border-0 bg-white transition-[width] dark:bg-slate-900 sm:border-r sm:border-slate-400/20`}
             >
                 <AnimatePresence initial={false} mode="popLayout">
                     {isOpen ? (
@@ -75,17 +75,36 @@ export default function NestedLayout({
                         <div className="h-full" />
                     )}
                 </AnimatePresence>
-                <div className="flex justify-between border-t border-slate-900/10 p-4">
+                <div className="flex justify-between border-t border-slate-900/10">
                     <span></span>
-                    <button onClick={handleOpen}>
-                        {isOpen ? (
+                    {isOpen ? (
+                        <button onClick={handleOpen} className="p-4">
                             <IconLayoutSidebarLeftCollapse className="text-inherit opacity-50 hover:opacity-80" />
-                        ) : (
-                            <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
-                        )}
-                    </button>
+                        </button>
+                    ) : (
+                        <button
+                            onClick={handleOpen}
+                            className="hidden sm:block sm:p-4"
+                        >
+                            <div className="">
+                                <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                            </div>
+                        </button>
+                    )}
                 </div>
+                {!isOpen && (
+                    <button
+                        onClick={handleOpen}
+                        className="absolute bottom-0 p-4 sm:hidden"
+                    >
+                        <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
+                    </button>
+                )}
             </div>
+            <div
+                onClick={() => setIsOpen(false)}
+                className="w-0 sm:grow lg:w-0"
+            ></div>
         </div>
     );
 }

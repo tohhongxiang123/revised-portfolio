@@ -17,7 +17,7 @@ export default async function SpecificNotePage({
     );
 
     return (
-        <div className="mx-auto block px-16">
+        <div className="mx-auto block p-4">
             <BreadCrumbs parts={params.id} />
             <div className="my-4" />
             <Post rawStringContent={content} />

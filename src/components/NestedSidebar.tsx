@@ -84,7 +84,7 @@ export default function NestedLayout({
                     ) : (
                         <button
                             onClick={handleOpen}
-                            className="hidden sm:block sm:p-4"
+                            className="hidden md:block md:p-4"
                         >
                             <div className="">
                                 <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
@@ -95,7 +95,7 @@ export default function NestedLayout({
                 {!isOpen && (
                     <button
                         onClick={handleOpen}
-                        className="absolute bottom-0 p-4 sm:hidden"
+                        className="absolute bottom-0 p-4 md:hidden"
                     >
                         <IconLayoutSidebarRightCollapse className="text-inherit opacity-50 hover:opacity-80" />
                     </button>
@@ -103,7 +103,7 @@ export default function NestedLayout({
             </div>
             <div
                 onClick={() => setIsOpen(false)}
-                className="w-0 sm:grow lg:w-0"
+                className="w-0 md:grow lg:w-0"
             ></div>
         </div>
     );

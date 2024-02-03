@@ -9,7 +9,7 @@ export default function Pre({ children, ...props }: CustomCodeBlockProps) {
     const code = Children.onlyText(children);
 
     return (
-        <div className="relative">
+        <div className="relative max-w-full">
             <CodeCopyButton code={code} className="absolute right-0 top-0" />
             <pre {...props}>{children}</pre>
         </div>

@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const notes = getFolderTree("notes");
 
     return (
-        <div className="flex h-full">
+        <div className="flex h-full w-screen">
             <div>
                 <NestedLayout items={notes} />
             </div>
